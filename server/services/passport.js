@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 
 const User = mongoose.model("users");
 
-
 // to check if the user is an authenticated one, is to compare what the user submitted with session
 // to fetch or save obj in session, need to do serialize & deserialize
 passport.serializeUser((user, done) => {
@@ -28,6 +27,7 @@ passport.use(
 			clientID: keys.googleClientID,
 			clientSecret: keys.googleClientSecret,
 			callbackURL: "/auth/google/callback",
+			proxy: true
 		},
 		(accessToken, refreshToken, profile, done) => {
 			// console.log('access token\n', accessToken);
