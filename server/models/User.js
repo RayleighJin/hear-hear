@@ -1,3 +1,6 @@
+/*
+handling MongoDB model - users
+*/
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 

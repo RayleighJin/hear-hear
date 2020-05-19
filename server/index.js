@@ -1,12 +1,23 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const authRoutes = require('./routes/authRoutes');
+const express = require("express");
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const keys = require("./config/keys");
+const authRoutes = require("./routes/authRoutes");
 
-require('./models/User');
-require('./services/passport');
+require("./models/User");
+require("./services/passport");
 
 const app = express();
+app.use(
+	cookieSession({
+		maxAge: 30 * 24 * 3600 * 1000, // Cookie TTL
+		keys: [keys.cookieKey],
+	})
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.connect(keys.mongoURI);
 
@@ -14,6 +25,3 @@ authRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-
-
-
