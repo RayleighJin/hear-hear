@@ -13,7 +13,7 @@ const app = express();
 // 3 middlewares for preprocessing of the incoming requests
 app.use(
 	cookieSession({
-		maxAge: 30 * 24 * 3600 * 1000, // Cookie TTL
+		maxAge: 30 * 24 * 3600 * 1000, // Cookie TTL 30 days
 		keys: [keys.cookieKey],
 	})
 );
