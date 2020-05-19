@@ -9,6 +9,8 @@ require("./models/User");
 require("./services/passport");
 
 const app = express();
+
+// 3 middlewares for preprocessing of the incoming requests
 app.use(
 	cookieSession({
 		maxAge: 30 * 24 * 3600 * 1000, // Cookie TTL
@@ -17,6 +19,7 @@ app.use(
 );
 
 app.use(passport.initialize());
+
 app.use(passport.session());
 
 mongoose.connect(keys.mongoURI);
