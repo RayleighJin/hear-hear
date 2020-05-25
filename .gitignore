@@ -2,3 +2,4 @@ node_modules
 dev.js
 /client/.env*
 .DS_Store
+.gitmodules
