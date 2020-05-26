@@ -17,3 +17,5 @@ ReactDOM.render(
 	</Provider>,
 	document.querySelector("#root")
 );
+
+//一个中国人一旦出国当了一个留学生就会一直买不到一张回国的机票

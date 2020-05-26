@@ -2,15 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 const keys = require("./config/keys");
+
 const authRoutes = require("./routes/authRoutes");
+const billingRoutes = require("./routes/billingRoutes");
 
 require("./models/User");
 require("./services/passport");
 
 const app = express();
 
-// 3 middlewares for preprocessing of the incoming requests
+// 4 middlewares for preprocessing of the incoming requests
+app.use(bodyParser.json());
 app.use(
 	cookieSession({
 		maxAge: 30 * 24 * 3600 * 1000, // Cookie TTL 30 days
